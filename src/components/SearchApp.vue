@@ -4,9 +4,6 @@ export default {
 };
 </script>
 
-<template>
-  <input type="text" />
-  <button>Cerca</button>
-</template>
+<template></template>
 
 <style scoped></style>
