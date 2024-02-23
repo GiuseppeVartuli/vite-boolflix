@@ -20,7 +20,7 @@ export default {
   },
   computed: {},
   methods: {
-    searchUrl() {
+    searchMovies() {
       console.log("searchFilms chiamato");
       console.log(this.searchText);
 
@@ -40,7 +40,7 @@ export default {
           console.error("Errore nella richiesta:", error);
         });
     },
-    searchUrl() {
+    searchSeries() {
       console.log("searchSeries chiamato");
       console.log(this.searchText);
 
@@ -60,6 +60,10 @@ export default {
           console.error("Errore nella richiesta:", error);
         });
     },
+    searchAll() {
+      this.searchMovies();
+      this.searchSeries();
+    },
   },
   mounted() {
     console.log(store.api_movie_url.length);
@@ -77,8 +81,8 @@ export default {
         placeholder="Cerca Film o Serie"
         v-model="searchText"
       />
-      <button @click="searchUrl">Cerca</button>
-
+      <button @click="searchAll">Cerca</button>
+      <h1>Film</h1>
       <div class="movie" v-for="movie in movies">
         <img :src="`${store.api_img_url}w200${movie.poster_path}`" alt="" />
         <div class="description">
@@ -88,7 +92,7 @@ export default {
           <p class="vote">{{ movie.vote_average }}</p>
         </div>
       </div>
-
+      <h1>Serie</h1>
       <div class="series" v-for="serieItem in series">
         <img :src="`${store.api_img_url}w200${serieItem.poster_path}`" alt="" />
         <div class="description">
