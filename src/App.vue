@@ -5,7 +5,7 @@ import { store } from "./store.js";
 import axios from "axios";
 export default {
   name: "App",
-  store,
+
   components: {
     CardsApp,
     SearchApp,
@@ -14,28 +14,35 @@ export default {
     return {
       movies: [],
       searchText: "",
+      store,
     };
   },
   computed: {},
-  mounted() {
-    console.log(store.api_movie_url.length);
-    console.log(store.api_movie_url);
-  },
   methods: {
-    movieResults() {
-      const urlMovie = `${store.api_movie_url}api_key=${store.api_key}&query=${this.searchText}`;
+    searchFilms() {
+      console.log("searchFilms chiamato");
+      console.log(this.searchText);
+
+      const text = this.searchText.split(" ");
+      const titlePlus = text.join("+");
+      console.log(titlePlus);
+      const urlMovie = `${store.api_movie_url}api_key=${store.api_key}&query=${titlePlus}`;
       console.log(urlMovie);
-    },
-    fetchData() {
+
       axios
         .get(urlMovie)
         .then((response) => {
           this.movies = response.data.results;
+          console.log(this.movies);
         })
         .catch((error) => {
           console.error("Errore nella richiesta:", error);
         });
     },
+  },
+  mounted() {
+    console.log(store.api_movie_url.length);
+    console.log(store.api_movie_url);
   },
 };
 </script>
@@ -49,22 +56,18 @@ export default {
         placeholder="Cerca Film o Serie"
         v-model="searchText"
       />
-      <button @click="searchText">Cerca</button>
+      <button @click="searchFilms">Cerca</button>
       <div class="movie" v-for="movie in movies">
-        <img src="https://api.themoviedb.org/3/search/movie?" alt="" />
+        <img :src="`${store.api_img_url}w200${movie.poster_path}`" alt="" />
         <div class="description">
-          <p class="title"></p>
-          <p class="original_title">Il Signore degli anelli</p>
-          <p class="language">The lord of the rings</p>
-          <p class="vote">10</p>
+          <p class="title">{{ movie.title }}</p>
+          <p class="original_title">{{ movie.original_title }}</p>
+          <p class="language">{{ movie.original_language }}</p>
+          <p class="vote">{{ movie.vote_average }}</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
-img {
-  width: 250px;
-}
-</style>
+<style></style>
