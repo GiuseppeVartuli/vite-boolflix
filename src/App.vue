@@ -3,6 +3,7 @@ import CardsApp from "./components/CardsApp.vue";
 import SearchApp from "./components/SearchApp.vue";
 import { store } from "./store.js";
 import axios from "axios";
+
 export default {
   name: "App",
 
@@ -16,9 +17,10 @@ export default {
       series: [],
       searchText: "",
       store,
+      movie: {},
     };
   },
-  computed: {},
+
   methods: {
     searchMovies() {
       console.log("searchFilms chiamato");
@@ -64,7 +66,18 @@ export default {
       this.searchMovies();
       this.searchSeries();
     },
+    starsVote(vote_average) {
+      const stars = vote_average / 2;
+      // console.log(stars);
+      return Math.ceil(stars);
+    },
+    starsClass(index, voteAverage) {
+      return {
+        gold: index <= this.starsVote(voteAverage),
+      };
+    },
   },
+
   mounted() {
     console.log(store.api_movie_url.length);
     console.log(store.api_movie_url);
@@ -89,7 +102,16 @@ export default {
           <p class="title">{{ movie.title }}</p>
           <p class="original_title">{{ movie.original_title }}</p>
           <p class="language">{{ movie.original_language }}</p>
-          <p class="vote">{{ movie.vote_average }}</p>
+          <div v-if="movie">
+            <div v-if="movie">
+              <div v-for="index in 5" :key="index">
+                <i
+                  class="fas fa-star"
+                  :class="starsClass(index, movie.vote_average)"
+                ></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <h1>Serie</h1>
@@ -99,11 +121,26 @@ export default {
           <p class="title">{{ serieItem.title }}</p>
           <p class="original_title">{{ serieItem.original_title }}</p>
           <p class="language">{{ serieItem.original_language }}</p>
-          <p class="vote">{{ serieItem.vote_average }}</p>
+          <div v-if="serieItem">
+            <div v-for="index in 5" :key="index">
+              <i
+                class="fas fa-star"
+                :class="starsClass(index, serieItem.vote_average)"
+              ></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style></style>
+<style>
+.fa-star {
+  color: #ccc;
+}
+
+.gold {
+  color: goldenrod;
+}
+</style>
