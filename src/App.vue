@@ -76,6 +76,29 @@ export default {
         gold: index <= this.starsVote(voteAverage),
       };
     },
+    getLanguageFlagClass(language) {
+      const languageFlags = {
+        en: "flag-icon-us",
+        uk: "flag-icon-gb",
+        it: "flag-icon-it",
+        es: "flag-icon-es",
+        fr: "flag-icon-fr",
+        de: "flag-icon-de",
+        ja: "flag-icon-jp",
+        zh: "flag-icon-cn",
+        pt: "flag-icon-pt",
+        ru: "flag-icon-ru",
+        ar: "flag-icon-sa",
+        hi: "flag-icon-in",
+        ko: "flag-icon-kr",
+        tr: "flag-icon-tr",
+        nl: "flag-icon-nl",
+        sv: "flag-icon-se",
+        pl: "flag-icon-pl",
+      };
+
+      return languageFlags[language] || "flag-icon";
+    },
   },
 
   mounted() {
@@ -101,7 +124,13 @@ export default {
         <div class="description">
           <p class="title">{{ movie.title }}</p>
           <p class="original_title">{{ movie.original_title }}</p>
-          <p class="language">{{ movie.original_language }}</p>
+          <p class="language">
+            <span
+              class="flag-icon"
+              :class="getLanguageFlagClass(movie.original_language)"
+            ></span>
+          </p>
+
           <div v-if="movie">
             <div v-if="movie">
               <div v-for="index in 5" :key="index">
@@ -120,7 +149,13 @@ export default {
         <div class="description">
           <p class="title">{{ serieItem.title }}</p>
           <p class="original_title">{{ serieItem.original_title }}</p>
-          <p class="language">{{ serieItem.original_language }}</p>
+          <p class="language">
+            <span
+              class="flag-icon"
+              :class="getLanguageFlagClass(serieItem.original_language)"
+            ></span>
+          </p>
+
           <div v-if="serieItem">
             <div v-for="index in 5" :key="index">
               <i
