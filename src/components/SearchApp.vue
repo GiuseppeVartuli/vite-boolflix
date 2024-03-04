@@ -1,6 +1,13 @@
 <script>
+import { store } from "../store";
 export default {
   name: "SearchApp",
+
+  data() {
+    return {
+      store,
+    };
+  },
 };
 </script>
 

@@ -66,6 +66,7 @@ export default {
       this.searchMovies();
       this.searchSeries();
     },
+
     starsVote(vote_average) {
       const stars = vote_average / 2;
       // console.log(stars);
@@ -116,11 +117,13 @@ export default {
         type="text"
         placeholder="Cerca Film o Serie"
         v-model="searchText"
+        @keyup.enter="searchAll"
       />
       <button @click="searchAll">Cerca</button>
+
       <h1>Film</h1>
       <div class="movie" v-for="movie in movies">
-        <img :src="`${store.api_img_url}w200${movie.poster_path}`" alt="" />
+        <img :src="`${store.api_img_url}w342${movie.poster_path}`" alt="" />
         <div class="description">
           <p class="title">{{ movie.title }}</p>
           <p class="original_title">{{ movie.original_title }}</p>
@@ -145,7 +148,7 @@ export default {
       </div>
       <h1>Serie</h1>
       <div class="series" v-for="serieItem in series">
-        <img :src="`${store.api_img_url}w200${serieItem.poster_path}`" alt="" />
+        <img :src="`${store.api_img_url}w342${serieItem.poster_path}`" alt="" />
         <div class="description">
           <p class="title">{{ serieItem.title }}</p>
           <p class="original_title">{{ serieItem.original_title }}</p>
