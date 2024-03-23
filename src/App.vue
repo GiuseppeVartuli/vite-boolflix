@@ -1,15 +1,16 @@
 <script>
-import CardsApp from "./components/CardsApp.vue";
+import CardMovieApp from "./components/CardMovieApp.vue";
 import SearchApp from "./components/SearchApp.vue";
+import FlagApp from "./components/FlagApp.vue";
 import { store } from "./store.js";
-import axios from "axios";
 
 export default {
   name: "App",
 
   components: {
-    CardsApp,
+    CardMovieApp,
     SearchApp,
+    FlagApp,
   },
   data() {
     return {
@@ -22,51 +23,6 @@ export default {
   },
 
   methods: {
-    searchMovies() {
-      console.log("searchFilms chiamato");
-      console.log(this.searchText);
-
-      const text = this.searchText.split(" ");
-      const titlePlus = text.join("+");
-      console.log(titlePlus);
-      const urlBoolflix = `${store.api_movie_url}api_key=${store.api_key}&query=${titlePlus}`;
-      console.log(urlBoolflix);
-
-      axios
-        .get(urlBoolflix)
-        .then((response) => {
-          this.movies = response.data.results;
-          console.log(this.movies);
-        })
-        .catch((error) => {
-          console.error("Errore nella richiesta:", error);
-        });
-    },
-    searchSeries() {
-      console.log("searchSeries chiamato");
-      console.log(this.searchText);
-
-      const text = this.searchText.split(" ");
-      const titlePlus = text.join("+");
-      console.log(titlePlus);
-      const urlBoolflix = `${store.api_series_url}api_key=${store.api_key}&query=${titlePlus}`;
-      console.log(urlBoolflix);
-
-      axios
-        .get(urlBoolflix)
-        .then((response) => {
-          this.series = response.data.results;
-          console.log(this.series);
-        })
-        .catch((error) => {
-          console.error("Errore nella richiesta:", error);
-        });
-    },
-    searchAll() {
-      this.searchMovies();
-      this.searchSeries();
-    },
-
     starsVote(vote_average) {
       const stars = vote_average / 2;
       // console.log(stars);
@@ -77,6 +33,7 @@ export default {
         gold: index <= this.starsVote(voteAverage),
       };
     },
+
     getLanguageFlagClass(language) {
       const languageFlags = {
         en: "flag-icon-us",
@@ -105,6 +62,7 @@ export default {
   mounted() {
     console.log(store.api_movie_url.length);
     console.log(store.api_movie_url);
+    store.searchMovies();
   },
 };
 </script>
@@ -112,17 +70,11 @@ export default {
 <template>
   <div class="container">
     <div class="raw">
-      <input
-        name="searchText"
-        type="text"
-        placeholder="Cerca Film o Serie"
-        v-model="searchText"
-        @keyup.enter="searchAll"
-      />
-      <button @click="searchAll">Cerca</button>
+      <SearchApp></SearchApp>
 
       <h1>Film</h1>
-      <div class="movie" v-for="movie in movies">
+
+      <div class="movie" v-for="movie in store.movies">
         <img :src="`${store.api_img_url}w342${movie.poster_path}`" alt="" />
         <div class="description">
           <p class="title">{{ movie.title }}</p>
@@ -147,7 +99,7 @@ export default {
         </div>
       </div>
       <h1>Serie</h1>
-      <div class="series" v-for="serieItem in series">
+      <div class="series" v-for="serieItem in store.series">
         <img :src="`${store.api_img_url}w342${serieItem.poster_path}`" alt="" />
         <div class="description">
           <p class="title">{{ serieItem.title }}</p>

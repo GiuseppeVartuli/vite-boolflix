@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "CardsApp",
+  name: "FlagApp",
 };
 </script>
 
