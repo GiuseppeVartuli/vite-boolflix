@@ -12,7 +12,14 @@ export default {
 
 <template>
   <div class="movie" v-for="movie in store.movies">
-    <img :src="`${store.api_img_url}w342${movie.poster_path}`" alt="" />
+    <img
+      :src="
+        movie.poster_path
+          ? `${store.api_img_url}w342${movie.poster_path}`
+          : 'https://timescineplex.com/times/img/no-poster.png'
+      "
+      alt=""
+    />
     <div class="description">
       <p class="title" v-if="movie.title !== movie.original_title">
         {{ movie.title }}
@@ -39,4 +46,8 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+img {
+  width: 342px;
+}
+</style>
