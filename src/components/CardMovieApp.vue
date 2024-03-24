@@ -11,6 +11,7 @@ export default {
 </script>
 
 <template>
+  <h1>Film</h1>
   <div class="movie" v-for="movie in store.movies">
     <img
       :src="

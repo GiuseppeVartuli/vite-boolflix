@@ -11,6 +11,7 @@ export default {
 </script>
 
 <template>
+  <h1>Serie</h1>
   <div class="series" v-for="serieItem in store.series">
     <img
       :src="

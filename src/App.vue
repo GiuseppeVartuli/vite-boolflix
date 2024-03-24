@@ -34,9 +34,7 @@ export default {
   <div class="container">
     <div class="raw">
       <SearchApp></SearchApp>
-      <h1>Film</h1>
       <CardMovieApp></CardMovieApp>
-      <h1>Serie</h1>
       <CardSerieApp></CardSerieApp>
     </div>
   </div>
