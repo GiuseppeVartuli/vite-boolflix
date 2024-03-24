@@ -14,10 +14,7 @@ export default {
   <div class="movie" v-for="movie in store.movies">
     <img :src="`${store.api_img_url}w342${movie.poster_path}`" alt="" />
     <div class="description">
-      <p
-        class="title"
-        v-if="movie.title && movie.title !== movie.original_title"
-      >
+      <p class="title" v-if="movie.title !== movie.original_title">
         {{ movie.title }}
       </p>
       <p class="title" v-else-if="!movie.title">Titolo non disponibile</p>
