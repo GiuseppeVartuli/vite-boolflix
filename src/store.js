@@ -62,4 +62,27 @@ export const store = reactive({
     this.searchMovies();
     this.searchSeries();
   },
+  getLanguageFlagClass(language) {
+    const languageFlags = {
+      en: "flag-icon-us",
+      uk: "flag-icon-gb",
+      it: "flag-icon-it",
+      es: "flag-icon-es",
+      fr: "flag-icon-fr",
+      de: "flag-icon-de",
+      ja: "flag-icon-jp",
+      zh: "flag-icon-cn",
+      pt: "flag-icon-pt",
+      ru: "flag-icon-ru",
+      ar: "flag-icon-sa",
+      hi: "flag-icon-in",
+      ko: "flag-icon-kr",
+      tr: "flag-icon-tr",
+      nl: "flag-icon-nl",
+      sv: "flag-icon-se",
+      pl: "flag-icon-pl",
+    };
+
+    return languageFlags[language] || "flag-icon";
+  },
 });
