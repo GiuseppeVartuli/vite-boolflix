@@ -85,6 +85,7 @@ export const store = reactive({
 
     return languageFlags[language] || "flag-icon";
   },
+  // funzioni per le votazioni in stelle
   starsVote(vote_average) {
     const stars = vote_average / 2;
     // console.log(stars);
