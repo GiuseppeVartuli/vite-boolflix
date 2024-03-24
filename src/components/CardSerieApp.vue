@@ -1,0 +1,38 @@
+<script>
+import { store } from "../store";
+export default {
+  name: "CardSerieApp",
+  data() {
+    return {
+      store,
+    };
+  },
+};
+</script>
+
+<template>
+  <div class="series" v-for="serieItem in store.series">
+    <img :src="`${store.api_img_url}w342${serieItem.poster_path}`" alt="" />
+    <div class="description">
+      <p class="title">{{ serieItem.title }}</p>
+      <p class="original_title">{{ serieItem.original_title }}</p>
+      <p class="language">
+        <span
+          class="flag-icon"
+          :class="store.getLanguageFlagClass(serieItem.original_language)"
+        ></span>
+      </p>
+
+      <div v-if="serieItem">
+        <div v-for="index in 5" :key="index">
+          <i
+            class="fas fa-star"
+            :class="store.starsClass(index, serieItem.vote_average)"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped></style>
