@@ -22,19 +22,6 @@ export default {
     };
   },
 
-  methods: {
-    starsVote(vote_average) {
-      const stars = vote_average / 2;
-      // console.log(stars);
-      return Math.ceil(stars);
-    },
-    starsClass(index, voteAverage) {
-      return {
-        gold: index <= this.starsVote(voteAverage),
-      };
-    },
-  },
-
   mounted() {
     console.log(store.api_movie_url.length);
     console.log(store.api_movie_url);
@@ -67,7 +54,7 @@ export default {
               <div v-for="index in 5" :key="index">
                 <i
                   class="fas fa-star"
-                  :class="starsClass(index, movie.vote_average)"
+                  :class="store.starsClass(index, movie.vote_average)"
                 ></i>
               </div>
             </div>
@@ -91,7 +78,7 @@ export default {
             <div v-for="index in 5" :key="index">
               <i
                 class="fas fa-star"
-                :class="starsClass(index, serieItem.vote_average)"
+                :class="store.starsClass(index, serieItem.vote_average)"
               ></i>
             </div>
           </div>

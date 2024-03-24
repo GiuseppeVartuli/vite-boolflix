@@ -85,4 +85,14 @@ export const store = reactive({
 
     return languageFlags[language] || "flag-icon";
   },
+  starsVote(vote_average) {
+    const stars = vote_average / 2;
+    // console.log(stars);
+    return Math.ceil(stars);
+  },
+  starsClass(index, voteAverage) {
+    return {
+      gold: index <= this.starsVote(voteAverage),
+    };
+  },
 });
