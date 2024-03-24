@@ -14,15 +14,22 @@ export default {
   <div class="series" v-for="serieItem in store.series">
     <img :src="`${store.api_img_url}w342${serieItem.poster_path}`" alt="" />
     <div class="description">
-      <p class="title">{{ serieItem.title }}</p>
-      <p class="original_title">{{ serieItem.original_title }}</p>
+      <p
+        class="title"
+        v-if="serieItem.title && serieItem.title !== serieItem.original_title"
+      >
+        {{ serieItem.title }}
+      </p>
+      <p class="title" v-else-if="!serieItem.title">Titolo non disponibile</p>
+      <p class="original_title">
+        {{ serieItem.original_title }}
+      </p>
       <p class="language">
         <span
           class="flag-icon"
           :class="store.getLanguageFlagClass(serieItem.original_language)"
         ></span>
       </p>
-
       <div v-if="serieItem">
         <div v-for="index in 5" :key="index">
           <i
