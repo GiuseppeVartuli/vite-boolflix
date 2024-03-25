@@ -30,19 +30,7 @@ export default {
 
 <template>
   <HeaderApp></HeaderApp>
-  <div class="container">
-    <div class="raw">
-      <MainApp></MainApp>
-    </div>
-  </div>
+  <MainApp></MainApp>
 </template>
 
-<style>
-.fa-star {
-  color: #ccc;
-}
-
-.gold {
-  color: goldenrod;
-}
-</style>
+<style></style>

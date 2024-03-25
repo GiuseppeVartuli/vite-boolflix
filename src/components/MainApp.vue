@@ -17,8 +17,10 @@ export default {
 </script>
 
 <template>
-  <CardMovieApp></CardMovieApp>
-  <CardSerieApp></CardSerieApp>
+  <main>
+    <CardMovieApp></CardMovieApp>
+    <CardSerieApp></CardSerieApp>
+  </main>
 </template>
 
-<style scoped></style>
+<style></style>

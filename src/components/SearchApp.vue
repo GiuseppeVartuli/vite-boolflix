@@ -12,14 +12,16 @@ export default {
 </script>
 
 <template>
-  <input
-    name="searchText"
-    type="text"
-    placeholder="Cerca Film o Serie"
-    v-model="store.searchText"
-    @keyup.enter="store.searchAll"
-  />
-  <button @click="store.searchAll">Cerca</button>
+  <div class="search">
+    <input
+      name="searchText"
+      type="text"
+      placeholder="Cerca Film o Serie"
+      v-model="store.searchText"
+      @keyup.enter="store.searchAll"
+    />
+    <button @click="store.searchAll">Cerca</button>
+  </div>
 </template>
 
-<style scoped></style>
+<style></style>
