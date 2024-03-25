@@ -9,6 +9,7 @@ export const store = reactive({
   searchText: "",
   movies: [],
   series: [],
+  noResultsFound: false,
 
   // ricerca film
   searchMovies() {
@@ -37,7 +38,7 @@ export const store = reactive({
   searchSeries() {
     console.log("searchSeries chiamato");
     console.log(this.searchText);
-
+    //console.log(this.noResultsFound);
     const text = this.searchText.split(" ");
     const titlePlus = text.join("+");
     console.log(titlePlus);
@@ -61,6 +62,11 @@ export const store = reactive({
     console.log("chiamata arrivata");
     this.searchMovies();
     this.searchSeries();
+    if (this.movies.length === 0 && this.series.length === 0) {
+      this.noResultsFound = true;
+    } else {
+      this.noResultsFound = false;
+    }
   },
   getLanguageFlagClass(language) {
     const languageFlags = {
