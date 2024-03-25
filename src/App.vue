@@ -1,6 +1,6 @@
 <script>
 import CardMovieApp from "./components/CardMovieApp.vue";
-import SearchApp from "./components/SearchApp.vue";
+import HeaderApp from "./components/HeaderApp.vue";
 import CardSerieApp from "./components/CardSerieApp.vue";
 import { store } from "./store.js";
 
@@ -9,8 +9,8 @@ export default {
 
   components: {
     CardMovieApp,
-    SearchApp,
     CardSerieApp,
+    HeaderApp,
   },
   data() {
     return {
@@ -31,9 +31,9 @@ export default {
 </script>
 
 <template>
+  <HeaderApp></HeaderApp>
   <div class="container">
     <div class="raw">
-      <SearchApp></SearchApp>
       <CardMovieApp></CardMovieApp>
       <CardSerieApp></CardSerieApp>
     </div>
