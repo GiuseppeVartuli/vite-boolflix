@@ -1,16 +1,14 @@
 <script>
-import CardMovieApp from "./components/CardMovieApp.vue";
 import HeaderApp from "./components/HeaderApp.vue";
-import CardSerieApp from "./components/CardSerieApp.vue";
+import MainApp from "./components/MainApp.vue";
 import { store } from "./store.js";
 
 export default {
   name: "App",
 
   components: {
-    CardMovieApp,
-    CardSerieApp,
     HeaderApp,
+    MainApp,
   },
   data() {
     return {
@@ -34,8 +32,7 @@ export default {
   <HeaderApp></HeaderApp>
   <div class="container">
     <div class="raw">
-      <CardMovieApp></CardMovieApp>
-      <CardSerieApp></CardSerieApp>
+      <MainApp></MainApp>
     </div>
   </div>
 </template>
