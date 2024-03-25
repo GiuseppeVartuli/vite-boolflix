@@ -44,6 +44,11 @@ export default {
             ></i>
           </div>
         </div>
+        <div class="overview" v-if="serieItem.overview">
+          <div class="category">Overview:</div>
+          <div>{{ serieItem.overview }}</div>
+        </div>
+        <div v-else>Nessuna descrizione trovata</div>
       </div>
     </div>
   </div>
