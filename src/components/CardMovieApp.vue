@@ -14,9 +14,9 @@ export default {
   <h1>Film</h1>
   <div class="container">
     <div class="row">
-      <div class="col-3" v-for="movie in store.series">
+      <div class="col-3" v-for="movie in store.movies">
         <div class="card">
-          <div v-if="store.series.length > 0">
+          <div v-if="store.movies.length > 0">
             <div class="poster">
               <img
                 class="no-poster"
