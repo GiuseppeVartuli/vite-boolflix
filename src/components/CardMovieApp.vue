@@ -15,7 +15,7 @@ export default {
   <div class="container">
     <h1>Film: {{ store.movies.length }}</h1>
     <div class="row">
-      <div class="col-3" v-for="movie in store.movies" >
+      <div class="col-3 col-6 col-12" v-for="movie in store.movies" >
         <div class="card">
           <div class="poster">
             <img

@@ -147,4 +147,24 @@ h1 {
 .stars {
   margin-left: 5px;
 }
+
+
+@media screen and (min-width: 450px){
+  .col-12{
+    width: calc(100% / 12 * 12);
+  }
+  header {
+    & img {
+      width: 150px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  .col-6{
+    width: calc(100% / 12 * 6);
+  }
+}
+
 </style>
