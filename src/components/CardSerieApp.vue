@@ -167,4 +167,11 @@ h1 {
   }
 }
 
+
+@media screen and (min-width: 1144px) {
+  .col-3{
+    width: calc(100% / 12 * 3);
+  }
+  
+}
 </style>
