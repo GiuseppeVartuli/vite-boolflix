@@ -62,11 +62,6 @@ export const store = reactive({
     console.log("chiamata arrivata");
     this.searchMovies();
     this.searchSeries();
-    if (this.movies.length === 0 && this.series.length === 0) {
-      this.noResultsFound = true;
-    } else {
-      this.noResultsFound = false;
-    }
   },
   getLanguageFlagClass(language) {
     const languageFlags = {
