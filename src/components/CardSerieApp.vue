@@ -30,13 +30,13 @@ export default {
             />
             <div class="overlay">
               <div class="description">
-                <p class="title" v-if="serieItem.name !== serieItem.original_name">
+                <h3 class="title" v-if="serieItem.name !== serieItem.original_name">
                   {{ serieItem.name }}
-                </p>
-                <p class="title-unvailable" v-else-if="!serieItem.name">
+                </h3>
+                <h3 class="title-unvailable" v-else-if="!serieItem.name">
                   Titolo non disponibile
-                </p>
-                <p class="original_title">{{ serieItem.original_name }}</p>
+                </h3>
+                <h3 class="original_title">{{ serieItem.original_name }}</h3>
                 <p class="language">
                   <div class="category">Produzione:
                   <span
@@ -130,5 +130,21 @@ h1 {
   text-align: center;
   padding: 20px;
   text-align: left;
+}
+
+.category {
+  display: flex;
+  margin: 15px 0;
+}
+.flag-icon {
+  margin-left: 5px;
+}
+.overview {
+  display: flex;
+  max-width: 340px;
+  word-wrap: break-word;
+}
+.stars {
+  margin-left: 5px;
 }
 </style>

@@ -29,13 +29,13 @@ export default {
             />
             <div class="overlay">
               <div class="description">
-                <p class="title" v-if="movie.title !== movie.original_title">
+                <h3 class="title" v-if="movie.title !== movie.original_title">
                   {{ movie.title }}
-                </p>
-                <p class="title-unvailable" v-else-if="!movie.title">
+                </h3>
+                <h3 class="title-unvailable" v-else-if="!movie.title">
                   Titolo non disponibile
-                </p>
-                <p class="original_title">{{ movie.original_title }}</p>
+                </h3>
+                <h3 class="original_title">{{ movie.original_title }}</h3>
                 <p class="language">
                   <div class="category">Produzione:
                   <span
@@ -70,19 +70,5 @@ export default {
 </template>
 
 <style>
-.category {
-  display: flex;
-  margin: 15px 0;
-}
-.flag-icon {
-  margin-left: 5px;
-}
-.overview {
-  display: flex;
-  max-width: 340px;
-  word-wrap: break-word;
-}
-.stars {
-  margin-left: 5px;
-}
+
 </style>
